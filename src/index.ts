@@ -72,9 +72,9 @@ const populateAndQueryCacheWithConstructedSuccessResponse = async (
 			url,
 		},
 		storedRsp: {
-			body: await rspToInspect?.text(),
-			status: rspToInspect?.status,
-			headers: rspToInspect?.headers ? Array.from(rspToInspect.headers) : [],
+			body: await rspToInspect.text(),
+			status: rspToInspect.status,
+			headers: Array.from(rspToInspect.headers),
 		},
 		retrievedRsp: {
 			body: await cachedRsp?.text(),
@@ -106,7 +106,7 @@ export default {
 			redirectWithQuery: await populateAndQueryCacheWithConstructedRedirectResponse(
 				'eg3',
 				'https://squiz.net/?foo=bar',
-				'https://squiz.net/?foo=bar'
+				'https://squiz.net?foo=bar'
 			),
 
 			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
@@ -122,7 +122,7 @@ export default {
 			redirectWithQueryToNoQuery: await populateAndQueryCacheWithConstructedRedirectResponse(
 				'eg5',
 				'https://squiz.net/?foo=bar',
-				'https://squiz.net/'
+				'https://squiz.net'
 			),
 
 			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
@@ -130,7 +130,7 @@ export default {
 			redirectWithoutQueryToQuery: await populateAndQueryCacheWithConstructedRedirectResponse(
 				'eg6',
 				'https://squiz.net/',
-				'https://squiz.net/?foo=bar'
+				'https://squiz.net?foo=bar'
 			),
 		})
 	},
