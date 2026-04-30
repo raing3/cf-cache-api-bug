@@ -7,13 +7,14 @@ Reproduction steps:
 
 Expected behaviour:
 
-1. A 301 response that redirects to a location with a query string can be retrieved from cache
-   when accessed via both the `.workers.dev` domain and a worker route.
+1. A request with a query string that caches a 301 response that redirects to a location with a query string can
+   be retrieved from cache when accessed via both the `.workers.dev` domain and a worker route.
 
 Actual behaviour:
 
-1. A 301 response that redirects to a location with a query string can be retrieved from cache
-   when accessed via the `.workers.dev` domain, but is not retrievable when accessed via a worker route.
+1. A request with a query string that caches a 301 response that redirects to a location with a query string can
+   be retrieved from cache when accessed via the `.workers.dev` domain, but is not retrievable when accessed via
+   a worker route.
 
 The behaviour difference can also be seen with the worker deployed here:
 
