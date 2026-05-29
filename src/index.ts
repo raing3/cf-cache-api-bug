@@ -101,7 +101,7 @@ export default {
 				'https://squiz2.net/',
 			),
 
-			// [BROKEN] When accessed via workers.dev: response CANNOT be retrieved using the worker cache API
+			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
 			// [BROKEN] When accessed via worker route on domain: response CANNOT be retrieved using the worker cache API
 			redirectWithQuery: await populateAndQueryCacheWithConstructedRedirectResponse(
 				'eg3',
