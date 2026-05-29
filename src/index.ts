@@ -118,6 +118,22 @@ export default {
 			),
 
 			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
+			// [BROKEN] When accessed via worker route on domain: response CANNOT be retrieved using the worker cache API
+			redirectWithQueryInCacheKeyAndAppendedString: await populateAndQueryCacheWithConstructedRedirectResponse(
+				'https://squiz.net/?foo=baz::version.v1',
+				'https://squiz.net/?foo=baz',
+				'https://squiz.net?foo=baz'
+			),
+
+			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
+			// [BROKEN] When accessed via worker route on domain: response CANNOT be retrieved using the worker cache API
+			redirectWithRedirectedUrlAsCacheKey: await populateAndQueryCacheWithConstructedRedirectResponse(
+				'https://squiz.net?foo=baz',
+				'https://squiz.net/?foo=baz',
+				'https://squiz.net?foo=baz'
+			),
+
+			// [WORKING] When accessed via workers.dev: response can be stored and retrieved using the worker cache API
 			// [WORKING] When accessed via worker route on domain: response can be stored and retrieved using the worker cache API
 			redirectWithoutQuery: await populateAndQueryCacheWithConstructedRedirectResponse(
 				'eg4',
